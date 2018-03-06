@@ -1,0 +1,62 @@
+create table department(
+	department_id serial primary key,
+	department_name varchar(30),
+	department_head varchar(55) 
+);
+
+create table team(
+	team_id serial primary key,
+	team_name varchar(30),
+	team_head varchar(55),
+	dep_id integer references department(department_id)
+);
+
+create table users(
+	employee_id serial primary key,
+	first_name varchar(30),
+	last_name varchar(30),
+	user_name varchar(30) unique,
+	user_password varchar(30),
+	account_type integer,
+	reimbursement_amount numeric(6,2),
+	team_id_ref integer references team(team_id),
+	ssn varchar(11) unique,
+	email varchar(30) unique,
+	address varchar(255),
+	dob varchar(10)
+);
+
+create table trf(
+	trf_id serial primary key,
+	event_name varchar(30),
+    employee_id_ref integer references users(employee_id),
+	date_col varchar(50),
+	time_col varchar(50),
+	start_date varchar(50),
+	stop_date varchar(50),
+	missing_work integer,
+	place varchar(255),
+	description text,
+	cost_trf numeric(6,2),
+	grade_type integer,
+	event_type integer,
+	justification text,
+	attachments bytea,
+	status integer
+);
+
+create table approval(
+	approval_id serial primary key,
+	event_id integer references trf(trf_id),
+	status integer,
+	team_approval integer,
+	team_user integer references users(employee_id),
+	department_approval integer,
+	department_user integer references users(employee_id),
+	benCo_approval integer,
+	benCo_user integer references users(employee_id),
+	grade integer,
+	employee_id_GM integer references users(employee_id),
+	amount numeric(6,2)
+); 
+
