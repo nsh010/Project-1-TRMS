@@ -6,6 +6,7 @@ import services.AuthService;
 import services.EmployeeService;
 import services.JsonSerializer;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +24,12 @@ public class Login extends HttpServlet {
         Employee test = service.getByUserPassword(login.getUserName(),login.getPassword());
 
         if(test.getUserName().equals(login.getUserName()) && test.getPassword().equals(login.getPassword())) {
+            Cookie cookie = new Cookie("username",test.getUserName());
+            cookie.setPath("/");
+            Cookie cookie1 = new Cookie("password",test.getPassword());
+            cookie1.setPath("/");
+            resp.addCookie(cookie);
+            resp.addCookie(cookie1);
             String output = new Gson().toJson(test);
             resp.setStatus(200);
             resp.setHeader("Authorization", new AuthService().getToken(test));
