@@ -5,6 +5,22 @@
             <handle>doGet</handle>
         </handler>
     </controller>
+    <controller class="controllers.Login" path="/newTRMS">
+        <handler method="GET">
+            <handle>doGet</handle>
+        </handler>
+        <handler method="POST">
+            <handle>doPost</handle>
+        </handler>
+    </controller>
+    <controller class="controllers.Claims" path="/claims">
+        <handler method="GET">
+            <handle>doGet</handle>
+        </handler>
+        <handler method="POST">
+            <handle>doPost</handle>
+        </handler>
+    </controller>
     <controller class="controllers.JSONController" path="/json">
         <handler method="GET">
             <handle>getBook</handle>

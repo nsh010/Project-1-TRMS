@@ -23,6 +23,26 @@
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
 
+    <servlet>
+        <servlet-name>NewTRFController</servlet-name>
+        <servlet-class>controllers.newTRMS</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewTRFController</servlet-name>
+        <url-pattern>/newTRMS</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClaimsController</servlet-name>
+        <servlet-class>controllers.Claims</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClaimsController</servlet-name>
+        <url-pattern>/claims</url-pattern>
+    </servlet-mapping>
+
   <!--<filter>-->
     <!--<filter-name>AuthFilter</filter-name>-->
     <!--<filter-class>container.filter.AuthorizationFilter</filter-class>-->

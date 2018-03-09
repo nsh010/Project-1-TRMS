@@ -22,7 +22,7 @@ public class TRF {
     private int status;
 
     public TRF(){
-        this.id = 0;
+        this.id = 1;
         this.eventName = null;
         this.employeeId = 0;
         this.date = null;
